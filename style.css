@@ -9,6 +9,7 @@ a:hover{
 }
 h1{
     text-shadow: pink 1px 0 10px;
+    color:azure;
 }
 h2{
     color:lightpink;
@@ -18,5 +19,5 @@ h3{
 }
 div#naiyo{
     display:grid;
-    
+
 }
