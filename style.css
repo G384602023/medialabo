@@ -1,0 +1,22 @@
+a:link{
+    color:pink;
+}
+a:visited{
+    color:aqua;
+}
+a:hover{
+    color:violet;
+}
+h1{
+    text-shadow: pink 1px 0 10px;
+}
+h2{
+    color:lightpink;
+}
+h3{
+    text-shadow:lightpink 1px 0 5px;
+}
+div#naiyo{
+    display:grid;
+    
+}
