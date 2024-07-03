@@ -48,3 +48,4 @@ for(let n of rm){
     n.remove();
 }
 // 練習4-5 箇条書き追加プログラム
+let dat = document.querySelectorAll('data');
