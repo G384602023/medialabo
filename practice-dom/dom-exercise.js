@@ -41,11 +41,17 @@ mt2.insertAdjacentElement('beforeend',gz2);
 syasin.insertAdjacentElement('beforeend',mt2);
 
 // 練習4-4 箇条書き削除プログラム
-let ka = document.querySelector('ul#location');
+
 let rm = document.querySelectorAll('ul#location > li');
 
 for(let n of rm){
     n.remove();
 }
 // 練習4-5 箇条書き追加プログラム
-let dat = document.querySelectorAll('data');
+let ka = document.querySelector('ul#location');
+
+for(let n of data){
+  let dat = document.createElement('li'); 
+  dat.textContent = n.name+' ... 緯度:'+n.lat+', 経度:'+n.lng;
+  ka.insertAdjacentElement('beforeend',dat);
+} 
