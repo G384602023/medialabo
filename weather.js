@@ -46,6 +46,7 @@ let data = {
 };
 
 ////////// 課題3-2 ここからプログラムを書こう
+//コンソールへの表示
 console.log("緯度: "+data.coord.lon);
 console.log("経度: "+data.coord.lat);
 console.log("天気: "+data.weather[0].description);
@@ -55,3 +56,50 @@ console.log("湿度: "+data.main.humidity);
 console.log("風速: "+data.wind.speed);
 console.log("風向: "+data.wind.deg);
 console.log("都市名: "+data.name);
+
+
+//jsを使って結果を表示する
+let r = document.querySelector('div#result');
+let x = document.createElement('ul');
+let y = document.createElement('li');
+let z = 1;
+y.textContent = '世界の天気(検索結果'+z+'件)';
+r.insertAdjacentElement('beforeend',x);
+x.insertAdjacentElement('beforeend',y);
+
+let a = document.createElement('ul');
+let b = document.createElement('li');
+let c = document.createElement('li');
+let d = document.createElement('li');
+let e = document.createElement('li');
+let f = document.createElement('li');
+let g = document.createElement('li');
+let h = document.createElement('li');
+let i = document.createElement('li');
+let j = document.createElement('li');
+
+r.insertAdjacentElement('beforeend',a);
+
+b.textContent = '緯度: '+data.coord.lon;
+a.insertAdjacentElement('beforeend',b)
+c.textContent = '経度: '+data.coord.lat;
+a.insertAdjacentElement('beforeend',c);
+d.textContent = '天気: '+data.weather[0].description;
+a.insertAdjacentElement('beforeend',d);
+let gz = document.createElement('img');
+gz.setAttribute('src','kumo.png');
+let mt = document.createElement('p');
+mt.insertAdjacentElement('beforeend', gz);
+d.insertAdjacentElement('beforeend',mt);
+e.textContent = "最低気温: "+data.main.temp_min;
+a.insertAdjacentElement('beforeend',e);
+f.textContent = "最高気温: "+data.main.temp_max;
+a.insertAdjacentElement('beforeend',f);
+g.textContent = "湿度: "+data.main.humidity;
+a.insertAdjacentElement('beforeend',g);
+h.textContent = "風速: "+data.wind.speed;
+a.insertAdjacentElement('beforeend',h);
+i.textContent = "風向: "+data.wind.deg;
+a.insertAdjacentElement('beforeend',i);
+j.textContent = "都市名: "+data.name;
+a.insertAdjacentElement('beforeend',j);
