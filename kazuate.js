@@ -11,12 +11,20 @@ let a = document.querySelector('span#answer');
 let str = document.querySelector('p#result');
 // 将来以下の hantei(); の4回の呼び出しを全て削除する
 // 代わりにここでは，ボタンを押したら hantei() を呼び出すイベント処理をする
-hantei();
+
+let but = document.querySelector('#kaito');
+but.addEventListener('click',hantei);
+
+
 
 // ボタンを押した後の処理をする関数 hantei() の定義
 function hantei() {
   // 将来ここでは 4 ではなくテキストボックスに指定された数値を yoso に代入する
-  let yoso = 4;
+  
+  let i = document.querySelector('input[name="yosou"]');
+  let yosou = i.value;
+  let yoso = Math.floor(yosou); 
+
   kaisu = kaisu + 1;
   // console.log(kaisu+'回目の予想:'+yoso);
   // if((kaisu >= 4)){
