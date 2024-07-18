@@ -82,7 +82,6 @@ r.insertAdjacentElement('beforeend',a);
 a.insertAdjacentElement('beforeend',b)
 a.insertAdjacentElement('beforeend',c);
 a.insertAdjacentElement('beforeend',d);
-
 a.insertAdjacentElement('beforeend',e);
 a.insertAdjacentElement('beforeend',f);
 a.insertAdjacentElement('beforeend',g);
@@ -97,7 +96,19 @@ function print(data){
   c.textContent = '経度: '+data.coord.lat;
   d.textContent = '天気: '+data.weather[0].description;
   let gz = document.createElement('img');
-  gz.setAttribute('src','kumo.png');//写真が表示されない
+  if(data.weather[0].description=='曇りがち'){
+    gz.setAttribute('src','halfkumo.png');
+  }else if(data.weather[0].description=='晴天'){
+    gz.setAttribute('scr','kaisei.png');
+  }else if(data.weather[0].description=='厚い雲'){
+    gz.setAttribute('scr','kumo.png');
+  }else if(data.weather[0].description=='雲'){
+    gz.setAttribute('scr','kumori.png');
+  }else if(data.weather[0].description=='小雨'){
+    gz.setAttribute('scr','kosame.png');
+  }else if(data.weather[0].description=='霧'){
+    gz.setAttribute('scr','kiri.png');
+  }
   let mt = document.createElement('p');
   mt.insertAdjacentElement('beforeend', gz);
   d.insertAdjacentElement('beforeend',mt);
@@ -108,8 +119,6 @@ function print(data){
   i.textContent = "風向: "+data.wind.deg;
   j.textContent = "都市名: "+data.name;
 }
-
-
 
 let bet = document.querySelector('#sendRequest');
 bet.addEventListener('click', sendRequest);
