@@ -1,4 +1,4 @@
-let data = {
+let data = {//検索ができるようになったら、dataを削除する
   "coord": {
     "lon": 116.3972,
     "lat": 39.9075
@@ -57,18 +57,6 @@ let data = {
 // console.log("風向: "+data.wind.deg);
 // console.log("都市名: "+data.name);
 
-
-//ボタンと検索キー
-let but = document.querySelector('#kensaku');
-but.addEventListener('click',tenki);
-
-function tenki(){
-  let i = document.querySelector('input[name="where"]');
-  let toshi = i.value;
-  console.log('都市名:'+toshi);
-}
-
-
 //jsを使って結果を表示する
 let r = document.querySelector('div#result');
 let x = document.createElement('ul');
@@ -91,26 +79,87 @@ let j = document.createElement('li');
 
 r.insertAdjacentElement('beforeend',a);
 
-b.textContent = '緯度: '+data.coord.lon;
 a.insertAdjacentElement('beforeend',b)
-c.textContent = '経度: '+data.coord.lat;
 a.insertAdjacentElement('beforeend',c);
-d.textContent = '天気: '+data.weather[0].description;
 a.insertAdjacentElement('beforeend',d);
-let gz = document.createElement('img');
-gz.setAttribute('src','kumo.png');
-let mt = document.createElement('p');
-mt.insertAdjacentElement('beforeend', gz);
-d.insertAdjacentElement('beforeend',mt);
-e.textContent = "最低気温: "+data.main.temp_min;
+
 a.insertAdjacentElement('beforeend',e);
-f.textContent = "最高気温: "+data.main.temp_max;
 a.insertAdjacentElement('beforeend',f);
-g.textContent = "湿度: "+data.main.humidity;
 a.insertAdjacentElement('beforeend',g);
-h.textContent = "風速: "+data.wind.speed;
 a.insertAdjacentElement('beforeend',h);
-i.textContent = "風向: "+data.wind.deg;
 a.insertAdjacentElement('beforeend',i);
-j.textContent = "都市名: "+data.name;
 a.insertAdjacentElement('beforeend',j);
+
+//print(data);
+
+function print(data){
+  b.textContent = '緯度: '+data.coord.lon;
+  c.textContent = '経度: '+data.coord.lat;
+  d.textContent = '天気: '+data.weather[0].description;
+  let gz = document.createElement('img');
+  gz.setAttribute('src','kumo.png');//写真が表示されない
+  let mt = document.createElement('p');
+  mt.insertAdjacentElement('beforeend', gz);
+  d.insertAdjacentElement('beforeend',mt);
+  e.textContent = "最低気温: "+data.main.temp_min;
+  f.textContent = "最高気温: "+data.main.temp_max;
+  g.textContent = "湿度: "+data.main.humidity;
+  h.textContent = "風速: "+data.wind.speed;
+  i.textContent = "風向: "+data.wind.deg;
+  j.textContent = "都市名: "+data.name;
+}
+
+
+
+let bet = document.querySelector('#sendRequest');
+bet.addEventListener('click', sendRequest);
+
+
+// 通信を開始する処理
+function sendRequest() {
+
+  let i = document.querySelector('input[name="where"]');
+  let toshi = i.value;
+  let toid = Math.floor(toshi);
+
+
+	// URL を設定
+  //1.検索キーのうち都市コードを取得する
+	let url = 'https://www.nishita-lab.org/web-contents/jsons/openweather/'+toid+'.json';
+
+	// 通信開始
+	axios.get(url)
+		.then(showResult)
+		.catch(showError)
+		.then(finish);
+}
+
+// 通信が成功した時の処理
+function showResult(resp) {
+	// サーバから送られてきたデータを出力
+	let data = resp.data;
+
+	// data が文字列型なら，オブジェクトに変換する
+	if (typeof data === 'string') {
+		data = JSON.parse(data);
+	}
+  //天気を表示
+  print(data);
+	// data をコンソールに出力
+	console.log(data);
+
+	// data.x を出力
+	console.log(data.x);
+}
+
+// 通信エラーが発生した時の処理
+function showError(err) {
+	console.log(err);
+}	
+
+// 通信の最後にいつも実行する処理
+function finish() {
+	console.log('Ajax 通信が終わりました');
+}
+
+

@@ -4,12 +4,13 @@
         <meta cahrset="utf-8">
         <title>プロジェクト課題の検索結果を表示する</title>
         <link rel="stylesheet" href="project.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
         <script src="weather.js" defer></script>
     </head>
     <body>
         <label for="chimei">検索キー</label>
         <input type="search" name="where" size="10">
-        <button id="kensaku">検索</button>
+        <button id="sendRequest">検索</button>
         <div id="result"></div>
     </body>
 </html>
