@@ -8,8 +8,31 @@
         <script src="weather.js" defer></script>
     </head>
     <body>
+        <label for="midashi"><p>検索したい都市名と要素を選択してください</p></label>
         <label for="chimei">検索キー</label>
         <input type="search" name="where" size="10">
+        <!--ここの要素は変更するかも,世界の天気も変更するか、文字サイズを変更する.
+        次は講義資料にある、プルダウンメニューを作る。そのあと、選択の条件式を書いて、cssを作る-->
+        <input type="checkbox" name="youso" id="subete" value="subete">
+        <label for="subete">:全てを選択</label>
+        <input type="checkbox" name="youso" id="ido" value="ido">
+        <label for="ido">:緯度</label>
+        <input type="checkbox" name="youso" id="keido" value="keido">
+        <label for="keido">:経度</label>
+        <input type="checkbox" name="youso" id="tenki" value="tenki">
+        <label for="tenki">:天気</label>
+        <input type="checkbox" name="youso" id="min" value="min">
+        <label for="min">:最低気温</label>
+        <input type="checkbox" name="youso" id="max" value="max">
+        <label for="max">:最高気温</label>
+        <input type="checkbox" name="youso" id="situdo" value="situdo">
+        <label for="situdo">:湿度</label>
+        <input type="checkbox" name="youso" id="husoku" value="husoku">
+        <label for="husoku">:風速</label>
+        <input type="checkbox" name="youso" id="kazamuki" value="kazamuki">
+        <label for="kazamuki">:風向</label>
+        <input type="checkbox" name="youso" id="toshimei" value="toshimei">
+        <label for="toshimei">:都市名</label>
         <button id="sendRequest">検索</button>
         <div id="result"></div>
     </body>

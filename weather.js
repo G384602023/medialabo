@@ -1,50 +1,3 @@
-let data = {//検索ができるようになったら、dataを削除する
-  "coord": {
-    "lon": 116.3972,
-    "lat": 39.9075
-  },
-  "weather": [
-    {
-      "id": 803,
-      "main": "Clouds",
-      "description": "曇りがち",
-      "icon": "04d"
-    }
-  ],
-  "base": "stations",
-  "main": {
-    "temp": 9.94,
-    "feels_like": 8.65,
-    "temp_min": 9.94,
-    "temp_max": 9.94,
-    "pressure": 1022,
-    "humidity": 14,
-    "sea_level": 1022,
-    "grnd_level": 1016
-  },
-  "visibility": 10000,
-  "wind": {
-    "speed": 2.65,
-    "deg": 197,
-    "gust": 4.84
-  },
-  "clouds": {
-    "all": 53
-  },
-  "dt": 1646542386,
-  "sys": {
-    "type": 1,
-    "id": 9609,
-    "country": "CN",
-    "sunrise": 1646520066,
-    "sunset": 1646561447
-  },
-  "timezone": 28800,
-  "id": 1816670,
-  "name": "北京市",
-  "cod": 200
-};
-
 ////////// 課題3-2 ここからプログラムを書こう
 //コンソールへの表示
 // console.log("緯度: "+data.coord.lon);
@@ -57,14 +10,21 @@ let data = {//検索ができるようになったら、dataを削除する
 // console.log("風向: "+data.wind.deg);
 // console.log("都市名: "+data.name);
 
+
+//検索する要素の選択
+
 //jsを使って結果を表示する
 let r = document.querySelector('div#result');
+
 let x = document.createElement('ul');
 let y = document.createElement('li');
-let z = 1;
-y.textContent = '世界の天気(検索結果'+z+'件)';
-r.insertAdjacentElement('beforeend',x);
+let z = document.createElement('li');
+let count = 1;
+y.textContent = '世界の天気(検索結果'+count+'件)';
+r.insertAdjacentElement('beforeend',x)
 x.insertAdjacentElement('beforeend',y);
+
+
 
 let a = document.createElement('ul');
 let b = document.createElement('li');
@@ -89,25 +49,23 @@ a.insertAdjacentElement('beforeend',h);
 a.insertAdjacentElement('beforeend',i);
 a.insertAdjacentElement('beforeend',j);
 
-//print(data);
-
 function print(data){
   b.textContent = '緯度: '+data.coord.lon;
   c.textContent = '経度: '+data.coord.lat;
   d.textContent = '天気: '+data.weather[0].description;
   let gz = document.createElement('img');
   if(data.weather[0].description=='曇りがち'){
-    gz.setAttribute('src','halfkumo.png');
+    gz.setAttribute('src','halfkumo.png');//ここしか表示されない,1回目の検索結果の削除の方法
   }else if(data.weather[0].description=='晴天'){
-    gz.setAttribute('scr','kaisei.png');
+    gz.setAttribute('src','kaisei.png');
   }else if(data.weather[0].description=='厚い雲'){
-    gz.setAttribute('scr','kumo.png');
+    gz.setAttribute('src','kumo.png');
   }else if(data.weather[0].description=='雲'){
-    gz.setAttribute('scr','kumori.png');
+    gz.setAttribute('src','kumori.png');
   }else if(data.weather[0].description=='小雨'){
-    gz.setAttribute('scr','kosame.png');
+    gz.setAttribute('src','kosame.png');
   }else if(data.weather[0].description=='霧'){
-    gz.setAttribute('scr','kiri.png');
+    gz.setAttribute('src','kiri.png');
   }
   let mt = document.createElement('p');
   mt.insertAdjacentElement('beforeend', gz);
@@ -131,7 +89,6 @@ function sendRequest() {
   let toshi = i.value;
   let toid = Math.floor(toshi);
 
-
 	// URL を設定
   //1.検索キーのうち都市コードを取得する
 	let url = 'https://www.nishita-lab.org/web-contents/jsons/openweather/'+toid+'.json';
@@ -147,7 +104,7 @@ function sendRequest() {
 function showResult(resp) {
 	// サーバから送られてきたデータを出力
 	let data = resp.data;
-
+  //count = count + 1;
 	// data が文字列型なら，オブジェクトに変換する
 	if (typeof data === 'string') {
 		data = JSON.parse(data);
