@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>プルダウンメニューのサンプルページ</title>
+    <script src="select-sample.js" defer></script>
+  </head>
+
+  <body>
+    <h1>プルダウンメニューのサンプルページ</h1>
+    <label for="santaro">プルダウンメニュー</label>
+    <select name="santaro" id="santaro">
+        <option value="">三太郎の一人を選んでください</option>
+        <option value="momo">桃太郎</option>
+        <option value="kin">金太郎</option>
+        <option value="urashima">浦島太郎</option>
+    </select>
+    <button id="btn">コンソールに表示</button>
+    <h2>あなた何年生?</h2>
+    <p>
+        <input type="radio" name="year" id="year2" value="2">
+        <label for="year2">2年生</label>
+        <input type="radio" name="year" id="year3" value="3">
+        <label for="year3">3年生</label>
+    </p>
+
+    <h2>あなたの好きなものは?</h2>
+    <p>
+        <input type="checkbox" name="hobby" id="manga" value="manga">
+        <label for="manga">まんが</label>
+        <input type="checkbox" name="hobby" id="anime" value="anime">
+        <label for="anime">アニメ</label>
+        <input type="checkbox" name="hobby" id="game" value="game">
+        <label for="game">ゲーム</label>
+    <p> 
+        
+    <p><button id="answer">回答する</button></p>
+  </body>
+</html>
