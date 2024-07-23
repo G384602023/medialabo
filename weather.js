@@ -16,9 +16,12 @@
 //jsを使って結果を表示する
 let r = document.querySelector('div#result');
 
+let xy = document.createElement('div');
+r.insertAdjacentElement('beforeend',xy);
 let x = document.createElement('ul');
 let y = document.createElement('li');
 let count = 0;
+xy.insertAdjacentElement('beforeend',x);
 y.textContent = '世界の天気(検索結果'+count+'件)';
 r.insertAdjacentElement('beforeend',x)
 x.insertAdjacentElement('beforeend',y);
@@ -39,7 +42,6 @@ function print(data){
   let y1 = document.createElement('li');
   x.insertAdjacentElement('beforeend',y1);
   y1.textContent = '世界の天気(検索結果'+count+'件)';
-
   let cs = document.querySelector('#ido');
   if(cs.checked){
     let b = document.createElement('li');

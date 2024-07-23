@@ -1,0 +1,22 @@
+.midashi{
+    font-weight: bold;
+}
+.check{
+    border: 10px solid lightblue;
+    padding: 5px;
+    margin: 5px;
+    width: 200px;
+    height: 120px;
+    background: lightgreen;
+}
+.all{
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    border: 1px solid pink;
+    padding: 5px 5px 5px 0;
+}
+div+ul{
+    color: blue;
+    text-shadow: green 1px 0 10px;
+}

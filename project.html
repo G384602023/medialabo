@@ -8,8 +8,10 @@
         <script src="weather.js" defer></script>
     </head>
     <body>
+        <div class="all">
+        <div class="midashi">
         <label for="midashi"><p>検索したい都市名と要素を選択してください</p></label>
-        <label for="chimei">検索キー</label>
+        </div>
         <select name="kunimei" id="kuni">
             <option value="">都市名を選択</option>
             <option value="360630">カイロ(エジプト)</option>
@@ -27,6 +29,7 @@
         </select>
         <!--ここの要素は変更するかも,世界の天気も変更するか、文字サイズを変更する.
         次は講義資料にある、プルダウンメニューを作る。そのあと、選択の条件式を書いて、cssを作る-->
+        <div class="check">
         <p>
             <input type="checkbox" name="youso" id="ido" value="ido" checked>
             <label for="ido">緯度</label>
@@ -47,7 +50,9 @@
             <input type="checkbox" name="youso" id="toshimei" value="toshimei" checked>
             <label for="toshimei">都市名</label>
         </p>
+        </div>
         <button id="sendRequest">検索</button>
+        </div>
         <div id="result"></div>
     </body>
 </html>
